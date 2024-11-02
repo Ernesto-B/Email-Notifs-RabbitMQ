@@ -1,0 +1,8 @@
+POST http://localhost:3000/send-email
+Content-Type: application/json
+
+{
+    "to": "Test user 2",
+    "subject": "Testing RabbitMQ",
+    "body": "Using RabbitMQ is fun"
+}
