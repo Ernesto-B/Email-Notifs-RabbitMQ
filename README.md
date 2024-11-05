@@ -1,6 +1,6 @@
 # Email Notification Service Using RabbitMQ
 
-The purpose of this project is to demonstrate a simple message queue using RabbitMQ.
+The purpose of this project is to demonstrate a simple message queue using RabbitMQ, as well as a variation using priority messaging. 
 
 ## Table of Contents
 - [Email Notification Service Using RabbitMQ](#email-notification-service-using-rabbitmq)
@@ -18,7 +18,7 @@ The purpose of this project is to demonstrate a simple message queue using Rabbi
 
 ## Overview
 
-The project is designed to showcase how to use RabbitMQ for asynchronous message queuing, ensuring reliable and scalable email notifications. The producer (API endpoint) sends messages (email details) to a RabbitMQ queue, and consumer workers retrieve and process these messages concurrently.
+The project is designed to showcase how to use RabbitMQ for asynchronous message queuing, ensuring reliable and scalable email notifications. The producer (API endpoint) sends messages (email details) to a RabbitMQ queue, and consumer workers retrieve and process these messages concurrently. Furthermore, the messages are persisted in the queue, ensuring that no messages are lost even if the server goes down.
 
 ## Technologies Used
 
@@ -30,6 +30,8 @@ The project is designed to showcase how to use RabbitMQ for asynchronous message
 ## Project Structure
 - `producer.js`: Code for the producer (an API to send email details to the RabbitMQ queue)
 - `consumerWorker.js`: Code for the consumers (workers that get messages off the queue and process them; in this case, simulate sending an email)
+- `producerWithPriority.js`: Code for the producer with priority messaging
+- `consumerWorkersWithPriority.js`: Code for the consumers with priority messaging
 
 
 ## Getting Started
@@ -43,8 +45,8 @@ The project is designed to showcase how to use RabbitMQ for asynchronous message
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
-   cd <repository-name>
+   git clone https://github.com/Ernesto-B/Email-Notifs-RabbitMQ-Demo.git
+   cd https://github.com/Ernesto-B/Email-Notifs-RabbitMQ-Demo.git
     ```
 2. **Install Dependencies**
     ```bash
@@ -64,9 +66,17 @@ The project is designed to showcase how to use RabbitMQ for asynchronous message
     ```bash
     node producer.js
     ```
+    or
+    ```bash
+    node producerWithPriority.js
+    ```
 3. **Start the workers**
     ```bash
     node consumerWorkers.js
+    ```
+    or 
+    ```bash
+    node consumerWorkersWithPriority.js
     ```
 4. **Call the endpoint**
 - If the `Thunder Client` extension is installed, open the `requests.rest` file and click on the `Send Request` button.

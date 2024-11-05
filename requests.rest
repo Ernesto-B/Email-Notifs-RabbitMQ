@@ -6,3 +6,15 @@ Content-Type: application/json
     "subject": "Testing RabbitMQ",
     "body": "Using RabbitMQ is fun"
 }
+
+### 
+
+POST http://localhost:3001/send-email
+Content-Type: application/json
+
+{
+    "to": "Michael Ramen",
+    "subject": "Testing RabbitMQ with priorities",
+    "body": "RabbitMQ auto delivers higher priority messages first",
+    "priority": 9
+}
