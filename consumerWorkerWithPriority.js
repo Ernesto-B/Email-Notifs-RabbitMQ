@@ -3,17 +3,15 @@
 
 const amqp = require("amqplib")
 
-// RabbitMQ connection
 const RABBITMQ_URL = "amqp://localhost"
 const QUEUE_NAME = "emailQueueWithPriority"
 
 
-// Function to connect to RabbitMQ and consume messages
 async function consumeQueue(workerName) {
     try {
         const connection = await amqp.connect(RABBITMQ_URL)
         const channel = await connection.createChannel()
-        await channel.assertQueue(QUEUE_NAME, { durable: true, maxPriority: 10})
+        await channel.assertQueue(QUEUE_NAME, { durable: true, maxPriority: 10 })    // Ensure maxPriority is set
 
         console.log(`${workerName} is waiting for messages in ${QUEUE_NAME}`) // Identify the worker
 
